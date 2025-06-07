@@ -8,8 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
 /*
- *= require_tree .
- *= require_self
- *= require ./tailwind/application.css
- */
+*= require_tree .
+*= require_self
+*= require_tree ./tailwind
+*/
