@@ -18,7 +18,6 @@ proxy:
 registry:
   server: registry.digitalocean.com/ok-boring
   username: kamal-skiff
-
   password:
     - KAMAL_REGISTRY_PASSWORD
 
@@ -28,7 +27,6 @@ env:
   clear:
     SOLID_QUEUE_IN_PUMA: true
 
-
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
   shell: app exec --interactive --reuse "bash"
@@ -36,7 +34,7 @@ aliases:
   dbc: app exec --interactive --reuse "bin/rails dbconsole"
 
 volumes:
-  - "/var/my-guys/db:/rails/sqlite"
+  - "/var/my-guys/db:/data"
 
 asset_path: /rails/public/assets
 
