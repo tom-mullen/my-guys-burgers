@@ -28,6 +28,7 @@ env:
   clear:
     SOLID_QUEUE_IN_PUMA: true
 
+
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
   shell: app exec --interactive --reuse "bash"
@@ -35,7 +36,7 @@ aliases:
   dbc: app exec --interactive --reuse "bin/rails dbconsole"
 
 volumes:
-  - "/var/wild-willy/db:/rails/sqlite"
+  - "/var/my-guys/db:/rails/sqlite"
 
 asset_path: /rails/public/assets
 
