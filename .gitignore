@@ -9,6 +9,7 @@
 
 # Ignore all environment files.
 /.env*
+!/.env*.erb
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -35,3 +36,78 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore Kamal secrets
+.kamal/secrets*
+.kamal/secrets
+.kamal
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.bak
+*.cache
+*.pid
+*.seed
+*.log
+
+# Ignore database dumps
+*.dump
+*.sql
+
+# Ignore node modules
+/node_modules
+/yarn-error.log
+
+# Ignore precompiled assets
+/public/packs
+/public/packs-test
+
+# Ignore Redis dump
+dump.rdb
+
+# Ignore Mac and Linux system files
+.DS_Store
+*.swp
+*.swo
+*~
+.project
+.idea
+.secret
+
+# Ignore byebug history
+.byebug_history
+
+# Ignore Spring files
+/spring/*.pid
+
+# Ignore test reports
+/test/reports/
+/coverage/
+
+# Ignore vendor bundle
+/vendor/bundle
+
+# Ignore credentials
+/config/credentials/*.key
+
+# Ignore local database config overrides
+/config/database.yml.local
+
+# Ignore development environment variables
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore RubyMine settings
+.idea/
+
+# Ignore OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
