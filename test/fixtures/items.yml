@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hamburger:
+  name: Little Hamburger
+  category: main
+  quantity: 10
+  price: 6.95
+
+bacon:
+  name: Bacon
+  category: topping
+  quantity: 20
+  price: 1.50
+
+fries:
+  name: Mini Salted Fries
+  category: side
+  quantity: 15
+  price: 3.25
+
+chocolate_shake:
+  name: Chocolate Shake
+  category: shake
+  quantity: 8
+  price: 2.00

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<%= tag.html do %>
+  <%= tag.head do %>
+    <%= tag.title(content_for(:title) || "My Guys - Burgers & Fries") %>
+    <%= tag.meta name: "viewport", content: "width=device-width,initial-scale=1" %>
+    <%= tag.meta name: "apple-mobile-web-app-capable", content: "yes" %>
+    <%= tag.meta name: "mobile-web-app-capable", content: "yes" %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%= tag.link rel: "icon", href: "/icon.png", type: "image/png" %>
+    <%= tag.link rel: "icon", href: "/icon.svg", type: "image/svg+xml" %>
+    <%= tag.link rel: "apple-touch-icon", href: "/icon.png" %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= action_cable_meta_tag %>
+    <%= javascript_importmap_tags %>
+  <% end %>
+
+  <%= tag.body do %>
+    <%= tag.div(class: "min-h-dvh grid grid-rows-[auto_1fr_auto]") do %>
+      <%= tag.div(class: "checked-border self-start") %>
+      <%= tag.div(class: "grid place-items-center bg-red max-md:px-8") do %>
+        <%= yield %>
+      <% end %>
+      <%= tag.div(class: "checked-border self-end") %>
+    <% end %>
+  <% end %>
+<% end %>

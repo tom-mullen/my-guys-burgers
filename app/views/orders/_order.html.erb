@@ -1,0 +1,23 @@
+<%= tag.div class: "bg-white p-6 rounded-lg shadow-md", id: "kitchen_order_#{order.id}" do %>
+  <%= tag.div class: "flex justify-between items-center mb-4" do %>
+    <%= tag.h2 "#Order #{order.id}", class: "text-2xl font-bold" %>
+    <%= tag.span order.customer_name, class: "text-lg text-gray-600" %>
+  <% end %>
+
+  <%= tag.div class: "space-y-3" do %>
+    <% order.line_items.group_by { |li| li.item.category }.each do |category, line_items| %>
+      <%= tag.div class: "border-l-4 border-red pl-3" do %>
+        <%= tag.h3 pluralize(line_items.length, category).split(" ").pop.capitalize, class: "text-xs text-gray-800 font-(family-name:--font-light)" %>
+        <% line_items.each do |line_item| %>
+          <%= tag.p line_item.item.name, class: "text-black ml-2" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= tag.div(class: "flex justify-between") do %>
+    <%= tag.div class: "mt-4 text-sm text-gray-500" do %>
+      Ordered at <%= order.created_at.strftime("%H:%M") %>
+    <% end %>
+  <% end %>
+<% end %>

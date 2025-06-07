@@ -1,0 +1,30 @@
+<% col_span = %[ cheese bacon ].include?(item.name.downcase) ? "col-span-3" : "col-span-2" %>
+<% text_color = %[ topping ].include?(item.category.downcase) ? "text-white" : "text-black" %>
+
+<%= tag.div(class: "#{col_span} text-center text-xl font-(family-name:--font-light) #{text_color}") do %>
+  <%= tag.div(class: "grid gap-3 justify-items-center text-center") do %>
+
+    <% if local_assigns[:multi_select] %>
+      <%= form.label "items_#{item.category}_ids_#{item.id}" do %>
+        <%= item.name %>
+        <%= "(+ #{item.surcharge})" if item.surcharge %>
+      <% end %>
+
+      <% selected_items = form.object.public_send("items_#{item.category}_ids").presence || [] %>
+      <%= check_box_tag "order[items_#{item.category}_ids][]",
+        item.id,
+        selected_items.include?(item.id.to_s),
+        class: radio_button_style(category: item.category),
+        id: "order_items_#{item.category}_ids_#{item.id}" %>
+    <% else %>
+      <%= form.label "items_#{item.category}_#{item.id}" do %>
+        <%= item.name %>
+        <%= "(+ #{item.surcharge})" if item.surcharge %>
+      <% end %>
+
+      <%= form.radio_button "items_#{item.category}", item.id,
+        class: radio_button_style(category: item.category),
+        id: "order_items_#{item.category}_#{item.id}" %>
+    <% end %>
+  <% end %>
+<% end %>

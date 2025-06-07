@@ -1,0 +1,6 @@
+<%= tag.div(class: "grid place-items-center gap-2") do %>
+  <%= tag.h1("My Guys", class: "text-white text-9xl") %>
+  <%= tag.h2("Burgers & Fries", class: "text-white text-3xl") %>
+<% end %>
+
+<%= link_to("Order Now", new_order_path, class: "self-center text-white rounded-lg p-6 border-1 border-white hover:bg-white hover:text-red") %>

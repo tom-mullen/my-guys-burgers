@@ -1,0 +1,9 @@
+<% content_for :title, "Kitchen Orders" %>
+
+<%= tag.div class: "w-full py-20" do %>
+  <%= tag.h1 "Kitchen Orders", class: "font-bold text-white text-4xl mb-6" %>
+
+  <%= tag.div id: "orders", class: "grid gap-4" do %>
+    <%= render partial: "orders/order", collection: @orders %>
+  <% end %>
+<% end %>

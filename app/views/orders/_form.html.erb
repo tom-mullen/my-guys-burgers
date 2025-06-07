@@ -1,0 +1,35 @@
+<%= tag.div(class: "bg-red") do %>
+  <%= form_with(model: order, class: "grid contents") do |form| %>
+    <% if form.object.errors.any? %>
+      <%= tag.div(class: "grid gap-6 bg-white mt-12 p-12") do %>
+        <%= tag.h3("Ooops! Your order couldn't be processed.", class: "text-red text-2xl") %>
+
+        <% form.object.errors.messages.values.flatten.each do |error| %>
+          <%= tag.p(error) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= tag.div class: "grid gap-4 mt-20 mb-2" do %>
+      <%= form.label "What's your name?", field: :customer_name, class: "text-white text-4xl" %>
+      <%= form.text_field :customer_name, class: text_field_style %>
+    <% end %>
+
+    <%= tag.div(class: "grid text-white") do %>
+      <% @items.group_by(&:category).each do |category, items| %>
+        <%= tag.div(class: "grid gap-2 py-8 px-6 #{category_style(category:)}") do %>
+          <%= tag.h2(item_category_prompt(category:), class: "text-4xl text-center mb-8") %>
+
+          <% multi_select = (category == "topping") %>
+          <%= tag.div(class: "#{category_grid_style(category:)} gap-y-8 gap-x-4 justify-items-center") do %>
+            <%= render partial: "items/item", collection: items, locals: { form: form, multi_select: } %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <%= tag.div class: "flex justify-end mt-10 mb-20" do %>
+      <%= form.submit "Place Order!", class: "text-white uppercase rounded-lg p-6 border-1 border-white cursor-pointer hover:bg-white hover:text-red" %>
+    <% end %>
+  <% end %>
+<% end %>
