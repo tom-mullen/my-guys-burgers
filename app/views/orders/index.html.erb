@@ -1,6 +1,6 @@
 <% content_for :title, "Orders" %>
 
-<%= tag.div class: "w-full py-20" do %>
+<%= tag.div class: "w-full py-20 max-md:px-8" do %>
   <%= tag.div class: "flex justify-between items-start" do %>
     <%= tag.h1 "Orders", class: "font-bold text-white text-4xl mb-6" %>
     <%= link_to "New order", new_order_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
