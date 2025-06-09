@@ -4,7 +4,7 @@
   <%= turbo_stream_from @joint.orders_stream %>
   <%= tag.div class: "flex justify-between items-start" do %>
     <%= tag.h1 "Your Orders", class: "font-bold text-white text-4xl mb-6" %>
-    <%= link_to "New order", new_joint_order_path(@joint), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= link_to "New order", new_joint_order_path(@joint), class: "flex-none rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block" %>
   <% end %>
 
   <%= turbo_frame_tag("orders", class: "block grid gap-6") do %>

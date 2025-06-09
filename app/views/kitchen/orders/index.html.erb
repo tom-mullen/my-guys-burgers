@@ -2,9 +2,13 @@
 
 <%= tag.div do %>
   <%= turbo_stream_from @joint.kitchen_stream %>
-  <%= tag.div class: "flex justify-between items-start" do %>
-    <%= tag.h1 "Kitchen Orders", class: "font-bold text-white text-4xl mb-6" %>
-    <%= button_to("Delete all!", destroy_all_joint_kitchen_orders_path(@joint), method: :delete, class: "cursor-pointer w-full text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium sm:w-auto") %>
+  <%= tag.div class: "flex flex-col justify-between items-start" do %>
+    <%= tag.h1 "Kitchen", class: "font-bold text-white text-4xl mb-6" %>
+
+    <%= tag.div(class: "w-full flex justify-between items-center mb-6") do %>
+      <%= link_to("Back to home", joint_path(@joint), class: "inline-block rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50") %>
+      <%= button_to("Delete all!", destroy_all_joint_kitchen_orders_path(@joint), method: :delete, class: "cursor-pointer text-red uppercase rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50") if @orders.any? %>
+    <% end %>
   <% end %>
 
   <%= turbo_frame_tag("kitchen_orders", class: "block grid gap-6") do %>
