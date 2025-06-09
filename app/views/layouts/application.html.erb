@@ -5,6 +5,8 @@
     <%= tag.meta name: "viewport", content: "width=device-width,initial-scale=1" %>
     <%= tag.meta name: "apple-mobile-web-app-capable", content: "yes" %>
     <%= tag.meta name: "mobile-web-app-capable", content: "yes" %>
+    <%= tag.meta name: "theme-color", content: "#FFFFFF" %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -22,8 +24,10 @@
   <%= tag.body do %>
     <%= tag.div(class: "min-h-dvh grid grid-rows-[auto_1fr_auto]") do %>
       <%= tag.div(class: "checked-border self-start") %>
-      <%= tag.div(class: "grid place-items-center bg-red px-8") do %>
-        <%= yield %>
+      <%= tag.div(class: "bg-red") do %>
+        <%= tag.div(class: "h-full mx-auto max-w-6xl grid p-6") do %>
+          <%= yield %>
+        <% end %>
       <% end %>
       <%= tag.div(class: "checked-border self-end") %>
     <% end %>

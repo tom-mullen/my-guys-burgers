@@ -1,4 +1,4 @@
-<%= tag.div class: "bg-white p-6 rounded-lg shadow-md", id: "kitchen_order_#{order.id}" do %>
+<%= tag.div id: dom_id(order), class: "bg-white p-6 rounded-lg shadow-md" do %>
   <%= tag.div class: "flex justify-between items-center mb-4" do %>
     <%= tag.h2 "#Order #{order.id}", class: "text-2xl font-bold" %>
     <%= tag.span order.customer_name, class: "text-lg text-gray-600" %>

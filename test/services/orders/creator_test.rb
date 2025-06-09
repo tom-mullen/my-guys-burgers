@@ -25,7 +25,7 @@ class Orders::CreatorTest < ActiveSupport::TestCase
     assert creator.success?
     assert_equal "John Doe", creator.order.customer_name
     assert_equal 3, creator.order.line_items.count
-    
+
     # Check that correct items were added
     item_ids = creator.order.line_items.pluck(:item_id)
     assert_includes item_ids, @main_item.id
@@ -38,7 +38,7 @@ class Orders::CreatorTest < ActiveSupport::TestCase
       order: {
         customer_name: "Jane Doe",
         items_main: @main_item.id.to_s,
-        items_topping_ids: [@topping_item1.id.to_s, @topping_item2.id.to_s],
+        items_topping_ids: [ @topping_item1.id.to_s, @topping_item2.id.to_s ],
         items_side: @side_item.id.to_s
       }
     })
@@ -49,7 +49,7 @@ class Orders::CreatorTest < ActiveSupport::TestCase
     assert creator.success?
     assert_equal "Jane Doe", creator.order.customer_name
     assert_equal 4, creator.order.line_items.count
-    
+
     # Check that all items were added including both toppings
     item_ids = creator.order.line_items.pluck(:item_id)
     assert_includes item_ids, @main_item.id
@@ -79,7 +79,7 @@ class Orders::CreatorTest < ActiveSupport::TestCase
       order: {
         customer_name: "Test Customer",
         items_main: @main_item.id.to_s,
-        items_topping_ids: [@topping_item1.id.to_s],
+        items_topping_ids: [ @topping_item1.id.to_s ],
         items_side: @side_item.id.to_s
       }
     })
@@ -88,7 +88,7 @@ class Orders::CreatorTest < ActiveSupport::TestCase
     creator.call
 
     assert creator.success?
-    
+
     # Check that prices were copied correctly
     line_items = creator.order.line_items.includes(:item)
     line_items.each do |line_item|

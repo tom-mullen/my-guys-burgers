@@ -1,0 +1,10 @@
+<%= form_with(model: joint) do |form| %>
+  <%= tag.div class: "grid gap-4 mt-20" do %>
+    <%= form.label "Whadda' ya gonna call this joint?", class: "text-white text-4xl" %>
+    <%= form.text_field :name, class: text_field_style %>
+  <% end %>
+
+  <%= tag.div class: "flex justify-end mt-10 mb-20" do %>
+    <%= form.submit "Make It!", class: "text-white uppercase rounded-lg p-6 border-1 border-white cursor-pointer hover:bg-white hover:text-red" %>
+  <% end %>
+<% end %>

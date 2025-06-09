@@ -21,16 +21,16 @@ class ItemTest < ActiveSupport::TestCase
   test "by_category scope orders items by category" do
     # Clear existing items to avoid fixture interference
     Item.destroy_all
-    
+
     # Create items in random order
     shake = Item.create!(name: "Shake", category: "shake", price: 5.00)
     main = Item.create!(name: "Burger", category: "main", price: 10.00)
     side = Item.create!(name: "Fries", category: "side", price: 3.00)
     topping = Item.create!(name: "Cheese", category: "topping", price: 1.00)
-    
+
     # Get items ordered by category
     ordered_items = Item.by_category
-    
+
     # Assert the order is correct: main, topping, side, shake
     assert_equal "main", ordered_items[0].category
     assert_equal "topping", ordered_items[1].category

@@ -1,16 +1,14 @@
-<% content_for :title, "Orders" %>
+<% content_for :title, "Your Orders" %>
 
-<%= tag.div class: "w-full py-20" do %>
+<%= tag.div do %>
+  <%= turbo_stream_from @joint.orders_stream %>
   <%= tag.div class: "flex justify-between items-start" do %>
-    <%= tag.h1 "Orders", class: "font-bold text-white text-4xl mb-6" %>
-    <%= link_to "New order", new_order_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= tag.h1 "Your Orders", class: "font-bold text-white text-4xl mb-6" %>
+    <%= link_to "New order", new_joint_order_path(@joint), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
   <% end %>
 
-  <%= tag.div id: "orders", class: "min-w-full divide-y divide-gray-200 space-y-5" do %>
-    <% if @orders.any? %>
-      <%= render @orders %>
-    <% else %>
-      <%= tag.p "No orders found.", class: "text-center my-10" %>
-    <% end %>
+  <%= turbo_frame_tag("orders", class: "block grid gap-6") do %>
+    <%= render partial: "orders/order", collection: @orders %>
+    <%= tag.p("You haven't ordered anything yet.", class: "text-black") if @orders.empty? %>
   <% end %>
 <% end %>

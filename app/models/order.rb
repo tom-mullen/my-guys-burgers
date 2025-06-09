@@ -1,7 +1,8 @@
 class Order < ApplicationRecord
   attr_accessor :items_main, :items_topping_ids, :items_side, :items_drink
 
-  has_many :line_items
+  belongs_to :joint
+  has_many :line_items, dependent: :destroy
   has_many :items, through: :line_items
 
   validates :customer_name, presence: { message: "Your name can't be blank!" }
@@ -10,19 +11,12 @@ class Order < ApplicationRecord
 
   accepts_nested_attributes_for :line_items, allow_destroy: true, reject_if: :all_blank
 
-  after_create_commit :broadcast_to_kitchen
+  after_commit :broadcast_refresh
 
   private
 
-  def broadcast_to_kitchen
-    ActionCable.server.broadcast(
-      "kitchen",
-      {
-        order_html: ApplicationController.render(
-          partial: "orders/order",
-          locals: { order: self }
-        )
-      }
-    )
+  def broadcast_refresh
+    broadcast_refresh_to joint.kitchen_stream
+    broadcast_refresh_to joint.orders_stream
   end
 end

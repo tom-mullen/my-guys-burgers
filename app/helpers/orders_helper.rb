@@ -28,7 +28,7 @@ module OrdersHelper
   def category_style(category:)
     case category
     when "main", "side", "drink"
-      "bg-white text-red mt-12"
+      "bg-white text-red mt-12 max-lg:mt-6"
     when "topping"
       "border-1 border-white"
     end
@@ -36,7 +36,9 @@ module OrdersHelper
 
   def category_grid_style(category:)
     case category
-    when "main", "topping"
+    when "main"
+      "grid grid-cols-2 md:grid-cols-6 "
+    when "topping"
       "grid grid-cols-6 "
     when "side"
       "grid grid-cols-4 "

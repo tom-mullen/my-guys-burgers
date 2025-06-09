@@ -1,9 +1,14 @@
 <% content_for :title, "Kitchen Orders" %>
 
-<%= tag.div class: "w-full py-20 mx-6" do %>
-  <%= tag.h1 "Kitchen Orders", class: "font-bold text-white text-4xl mb-6" %>
+<%= tag.div do %>
+  <%= turbo_stream_from @joint.kitchen_stream %>
+  <%= tag.div class: "flex justify-between items-start" do %>
+    <%= tag.h1 "Kitchen Orders", class: "font-bold text-white text-4xl mb-6" %>
+    <%= button_to("Delete all!", destroy_all_joint_kitchen_orders_path(@joint), method: :delete, class: "cursor-pointer w-full text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium sm:w-auto") %>
+  <% end %>
 
-  <%= tag.div id: "orders", class: "grid gap-4" do %>
+  <%= turbo_frame_tag("kitchen_orders", class: "block grid gap-6") do %>
     <%= render partial: "orders/order", collection: @orders %>
+    <%= tag.p("No orders yet, you can keep watching Netflix.", class: "text-black") if @orders.blank? %>
   <% end %>
 <% end %>

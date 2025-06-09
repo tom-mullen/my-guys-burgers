@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
+  resources :joints
   mount ActionCable.server => "/cable"
 
-  resources :items, only: %i[ index ]
-  resources :orders, except: %i[ destroy ]
-  root "welcome#show"
+  root "joints#new"
 
-  namespace :kitchen do
-    resources :orders, only: %i[ index ]
+  resources :joints, key: :joint_id, only: %i[ new create show ] do
+    resources :orders, except: %i[ edit update destroy ]
+
+    namespace :kitchen do
+      resources :orders, only: %i[ index ] do
+        collection do
+          delete :destroy_all
+        end
+      end
+    end
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

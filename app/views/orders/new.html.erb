@@ -1,5 +1,3 @@
 <% content_for :title, "New Order" %>
 
-<%= tag.div class: "md:w-2/3 w-full" do %>
-  <%= render "form", order: @order %>
-<% end %>
+<%= render "form", order: @order %>

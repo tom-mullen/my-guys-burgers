@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "rails", "~> 8.0.2"
+gem "friendly_id", "~> 5.5.0"
 gem "propshaft"
 gem "puma", ">= 5.0"
 gem "importmap-rails"
@@ -8,7 +9,6 @@ gem "turbo-rails"
 gem "sqlite3", "~> 2.1"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
-gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 gem "solid_cache"
