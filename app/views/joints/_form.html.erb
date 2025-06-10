@@ -1,10 +1,14 @@
-<%= form_with(model: joint) do |form| %>
-  <%= tag.div class: "grid gap-4 mt-20" do %>
-    <%= form.label "Whadda' ya gonna call this joint?", class: "text-white text-4xl" %>
-    <%= form.text_field :name, class: text_field_style %>
-  <% end %>
+<%= form_with(model: joint, class: "h-full grid items-center") do |form| %>
+  <%= tag.div(class: "flex flex-col gap-6") do %>
+    <%= render partial: "layouts/form_errors", locals: { form:, message: "Ooops!" } %>
 
-  <%= tag.div class: "flex justify-end mt-10 mb-20" do %>
-    <%= form.submit "Make It!", class: "text-white uppercase rounded-lg p-6 border-1 border-white cursor-pointer hover:bg-white hover:text-red" %>
+    <%= tag.div class: "flex flex-col gap-4" do %>
+      <%= form.label :name, "Whadda' ya gonna call this joint?", class: "col-span-full text-white text-4xl" %>
+      <%= form.text_field :name, class: "col-span-full #{text_field_style} md:col-span-8" %>
+    <% end %>
+
+    <%= tag.div class: "col-span-full justify-start" do %>
+      <%= form.submit "Make It!", class: "text-white uppercase rounded-lg p-6 border-1 border-white cursor-pointer hover:bg-white hover:text-red" %>
+    <% end %>
   <% end %>
 <% end %>

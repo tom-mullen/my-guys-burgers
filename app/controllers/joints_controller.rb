@@ -7,6 +7,8 @@ class JointsController < ApplicationController
 
   def show
     @joint = Joint.friendly.find(params[:id])
+  rescue
+    redirect_to new_joint_path
   end
 
   def create

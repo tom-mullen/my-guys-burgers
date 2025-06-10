@@ -1,0 +1,9 @@
+<% if form.object.errors.any? %>
+  <%= tag.div(class: "grid gap-6 bg-white mt-12 p-6") do %>
+    <%= tag.h3(message, class: "text-red text-2xl") %>
+
+    <% form.object.errors.messages.values.flatten.each do |error| %>
+      <%= tag.p(error) %>
+    <% end %>
+  <% end %>
+<% end %>
