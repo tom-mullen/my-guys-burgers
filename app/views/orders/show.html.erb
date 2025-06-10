@@ -1,5 +1,7 @@
 <% content_for :title, "Showing order" %>
 
+<%= render "layouts/joint_name", locals: { joint: @joint } %>
+
 <%= tag.div(class: "flex flex-col gap-6") do %>
   <% if notice.present? %>
     <%= tag.p notice, class: "py-2 px-3 bg-green-50 text-green-500 font-medium rounded-md inline-block", id: "notice" %>

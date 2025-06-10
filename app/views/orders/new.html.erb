@@ -1,3 +1,5 @@
 <% content_for :title, "New Order" %>
 
+<%= render "layouts/joint_name", locals: { joint: @joint } %>
+
 <%= render "form", order: @order %>

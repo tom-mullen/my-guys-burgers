@@ -1,6 +1,10 @@
 <% content_for :title, "Your Orders" %>
 
 <%= tag.div do %>
+  <%= tag.div(class: "mb-8") do %>
+    <%= render "layouts/joint_name", locals: { joint: @joint } %>
+  <% end %>
+
   <%= turbo_stream_from @joint.orders_stream %>
   <%= tag.div class: "flex justify-between items-start" do %>
     <%= tag.h1 "Your Orders", class: "font-bold text-white text-4xl mb-6" %>
