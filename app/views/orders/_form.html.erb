@@ -2,7 +2,7 @@
   <%= render partial: "layouts/form_errors", locals: { form:, message: "Ooops! Your order couldn't be processed." } %>
 
   <%= tag.div class: "grid gap-4 mt-12 md:mt-20" do %>
-    <%= form.label "What's your name?", field: :customer_name, class: "text-white text-4xl" %>
+    <%= form.label :customer_name, "What's your name?", field: :customer_name, class: "text-white text-4xl" %>
     <%= form.text_field :customer_name, class: text_field_style %>
   <% end %>
 
