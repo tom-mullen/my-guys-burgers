@@ -6,7 +6,7 @@ gem "propshaft"
 gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
-gem "sqlite3", "~> 2.1"
+gem "sqlite3", "~> 2.7"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
