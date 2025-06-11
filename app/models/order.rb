@@ -6,8 +6,8 @@ class Order < ApplicationRecord
   has_many :items, through: :line_items
 
   validates :customer_name, presence: { message: "Your name can't be blank!" }
-  validates :items_main, presence: { message: "You must choose at least 1 main." }
-  validates :items_side, presence: { message: "You must choose at least 1 side." }
+  validates :items_main, presence: { message: "Choose at least 1 main." }
+  validates :items_side, presence: { message: "Choose at least 1 side." }
 
   accepts_nested_attributes_for :line_items, allow_destroy: true, reject_if: :all_blank
 
