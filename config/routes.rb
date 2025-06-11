@@ -14,6 +14,8 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    get :kitchen, controller: "kitchen/orders", action: :index
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

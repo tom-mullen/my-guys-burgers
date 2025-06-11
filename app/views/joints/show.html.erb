@@ -7,7 +7,7 @@
 
     <%= tag.div(class: "self-center flex gap-6 mt-20 max-md:flex-col") do %>
       <%= link_to("Order Now", new_joint_order_path(@joint), class: "text-center bg-white text-red rounded-lg p-6 border-1 border-white hover:bg-red hover:text-white") %>
-      <%= link_to("To the Kitchen!", joint_kitchen_orders_path(@joint), class: "text-center bg-red text-white rounded-lg p-6 border-1 border-white hover:bg-white hover:text-red") %>
+      <%= link_to("To the Kitchen!", joint_kitchen_path(@joint), class: "text-center bg-red text-white rounded-lg p-6 border-1 border-white hover:bg-white hover:text-red") %>
     <% end %>
   <% end %>
 <% end %>

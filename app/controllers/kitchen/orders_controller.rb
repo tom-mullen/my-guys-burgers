@@ -8,6 +8,6 @@ class Kitchen::OrdersController < ApplicationController
       order.destroy
     end
 
-    redirect_to joint_kitchen_orders_path(@joint)
+    redirect_to joint_kitchen_path(@joint)
   end
 end
